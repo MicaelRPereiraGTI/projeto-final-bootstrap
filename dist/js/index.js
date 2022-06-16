@@ -22,12 +22,15 @@ function modificaCardParaLogin() {
 //CRIANDO E SALVANDO USUÁRIO
 const botaoSalvar = document.querySelector('#btn-salvar').addEventListener('click', (e) => {
     e.preventDefault();
-    let email = document.querySelector('#email-cadastrar').value;
-    let senha = document.querySelector('#senha-cadastrar').value;
-    let confirmaSenha = document.querySelector('#input-confirma-senha').value;
-    if (email.length > 5 && validaEmail(email) == true) {
-        if (senha === confirmaSenha) {
-            salvar(email, senha);
+    /* let email = (<HTMLInputElement>document.querySelector('#email-cadastrar')).value; */
+    let email = document.getElementById('email-cadastrar');
+    /* let senha = (<HTMLInputElement>document.querySelector('#senha-cadastrar')).value; */
+    let senha = document.getElementById('senha-cadastrar');
+    /* let confirmaSenha = (<HTMLInputElement>document.querySelector('#input-confirma-senha')).value; */
+    let confirmaSenha = document.getElementById('input-confirma-senha');
+    if (email.value.length > 5 && validaEmail(email.value) === true) {
+        if (senha.value === confirmaSenha.value) {
+            salvar(email.value, senha.value);
             alert("Cadastro realizado com sucesso!");
         }
         else {
@@ -37,6 +40,8 @@ const botaoSalvar = document.querySelector('#btn-salvar').addEventListener('clic
     else {
         alert("O E-mail digitado é inválido! \nExemplo: texto@texto.com");
     }
+    let emailValue = email.value;
+    console.log(emailValue.length);
 });
 //VALIDANDO E-MAIL
 function validaEmail(validaE) {
@@ -62,8 +67,8 @@ const btnLogar = document.querySelector('#btn-logar').addEventListener('click', 
     entrar();
 });
 function entrar() {
-    let email = document.querySelector('#email-login').value;
-    let senha = document.querySelector('#senha-login').value;
+    let email = document.querySelector('#email-login');
+    let senha = document.querySelector('#senha-login');
     /* let listaUser = '[]'; */
     let usuarioValido = {
         id: "",
@@ -72,7 +77,7 @@ function entrar() {
     };
     let listaUser = JSON.parse(localStorage.getItem('usuarios') || '[]');
     listaUser.forEach((item) => {
-        if (email === item.login && senha === item.senha) {
+        if (email.value === item.login.value && senha === item.senha.value) {
             usuarioValido = {
                 id: item.id,
                 login: item.login,
@@ -80,7 +85,7 @@ function entrar() {
             };
         }
     });
-    if (email === usuarioValido.login && senha === usuarioValido.senha) {
+    if (email.value === usuarioValido.login && senha.value === usuarioValido.senha) {
         alert('Bem-vindo so sitema Notes!');
         saveSession(usuarioValido.id);
         window.location.href = 'recados.html';

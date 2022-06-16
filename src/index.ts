@@ -26,13 +26,16 @@ function modificaCardParaLogin() {
 const botaoSalvar = (<HTMLButtonElement>document.querySelector('#btn-salvar')).addEventListener('click', (e) => {
     e.preventDefault();
 
-    let email = (<HTMLInputElement>document.querySelector('#email-cadastrar')).value;
-    let senha = (<HTMLInputElement>document.querySelector('#senha-cadastrar')).value;
-    let confirmaSenha = (<HTMLInputElement>document.querySelector('#input-confirma-senha')).value;
+    /* let email = (<HTMLInputElement>document.querySelector('#email-cadastrar')).value; */
+    let email = document.getElementById('email-cadastrar') as HTMLInputElement;
+    /* let senha = (<HTMLInputElement>document.querySelector('#senha-cadastrar')).value; */
+    let senha = document.getElementById('senha-cadastrar') as HTMLInputElement;
+    /* let confirmaSenha = (<HTMLInputElement>document.querySelector('#input-confirma-senha')).value; */
+    let confirmaSenha = document.getElementById('input-confirma-senha') as HTMLInputElement;
 
-    if (email.length > 5 && validaEmail(email) == true){
-        if(senha === confirmaSenha){
-            salvar(email, senha);
+    if (email.value.length > 5 && validaEmail(email.value) === true){
+        if(senha.value === confirmaSenha.value){
+            salvar(email.value, senha.value);
             alert("Cadastro realizado com sucesso!");
         }else{
             alert("As senhas digitadas devem ser iguais!")
@@ -40,7 +43,8 @@ const botaoSalvar = (<HTMLButtonElement>document.querySelector('#btn-salvar')).a
     }else{
         alert("O E-mail digitado é inválido! \nExemplo: texto@texto.com" )
     }
-    
+    let emailValue = email.value;
+    console.log(emailValue.length);
 });
 
 //VALIDANDO E-MAIL
@@ -73,8 +77,8 @@ const btnLogar = (<HTMLButtonElement>document.querySelector('#btn-logar')).addEv
 });
 
 function entrar(){
-    let email = (<HTMLInputElement>document.querySelector('#email-login')).value;
-    let senha = (<HTMLInputElement>document.querySelector('#senha-login')).value;
+    let email = document.querySelector('#email-login') as HTMLInputElement;
+    let senha = document.querySelector('#senha-login') as HTMLInputElement;
 
     /* let listaUser = '[]'; */
 
@@ -87,7 +91,7 @@ function entrar(){
     let listaUser  = JSON.parse(localStorage.getItem('usuarios') || '[]');
 
     listaUser.forEach((item: any) => {
-        if(email === item.login && senha === item.senha){
+        if(email.value === item.login.value && senha === item.senha.value){
             usuarioValido = {
                 id: item.id,
                 login: item.login,
@@ -96,7 +100,7 @@ function entrar(){
         }
     });
 
-    if(email === usuarioValido.login && senha === usuarioValido.senha){
+    if(email.value === usuarioValido.login && senha.value === usuarioValido.senha){
         alert('Bem-vindo so sitema Notes!')
         saveSession(usuarioValido.id);
         window.location.href ='recados.html';
@@ -110,7 +114,4 @@ function saveSession(data: any){
         sessionStorage.setItem("logado", JSON.stringify(data));
     }
     localStorage.setItem("session", data);
-
-   
-
 };
