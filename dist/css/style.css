@@ -5,10 +5,15 @@ body {
     font-family: 'Montserrat', sans-serif !important;
 }
 
-#card-cadastro {
+#card-login {
     display: none !important;
 }
 
 #btn-cadastrar {
     text-decoration: none;
+}
+
+.card-login {
+    display: flex;
+
 }
