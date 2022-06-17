@@ -77,8 +77,8 @@ const btnLogar = (<HTMLButtonElement>document.querySelector('#btn-logar')).addEv
 });
 
 function entrar(){
-    let email = document.querySelector('#email-login') as HTMLInputElement;
-    let senha = document.querySelector('#senha-login') as HTMLInputElement;
+    let email = document.querySelector('#email-logar') as HTMLInputElement;
+    let senha = document.querySelector('#senha-logar') as HTMLInputElement;
 
     /* let listaUser = '[]'; */
 
@@ -100,12 +100,16 @@ function entrar(){
         }
     });
 
-    if(email.value === usuarioValido.login && senha.value === usuarioValido.senha){
-        alert('Bem-vindo so sitema Notes!')
-        saveSession(usuarioValido.id);
-        window.location.href ='recados.html';
+    if(email.value === "" || senha.value === ""){
+        alert("Um ou mais campos inválidos!")
     }else{
-        alert('Algo deu errado, verifique o e-mail e a senha digitado \nOu clique em Criar conta!')
+        if(email.value === usuarioValido.login && senha.value === usuarioValido.senha){
+            alert('Bem-vindo so sitema Notes!')
+            saveSession(usuarioValido.id);
+            window.location.href ='recados.html';
+        }else{
+            alert('Algo deu errado, verifique o e-mail e a senha digitado \nOu clique em Criar conta!')
+        }
     }
 };
 
