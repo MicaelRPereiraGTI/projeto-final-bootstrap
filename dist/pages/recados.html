@@ -13,13 +13,19 @@
                 <div class="col-12 d-flex justify-content-center align-items-start mt-5">
                     <div class="container shadow-lg p-3 bg-body rounded">
                         <div class="row mt-2">
-                            <div class="col-10">
+                            <div class="col-8">
                                 <h2 class="">Notes List</h2>
                             </div>
-                            <div class="col">
+                            <div class="col-2">
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalNotas">
                                     Add Nota
                                 </button>
+                            </div>
+                            <div class="col-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16" id="btn-sair">
+                                    <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+                                    <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+                                  </svg>
                             </div>
                         </div>
                         <div class="row">
@@ -47,21 +53,21 @@
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
-                                        <form action="" class="">
+                                        <form action="" id="form-recados">
                                             <div class="col-10 offset-1">
                                                 <label class="form-label" for="descricao">Descrição</label>
-                                                <input class="form-control" type="text" name="descricoes" id="descricao" placeholder="Ler livro">
+                                                <input class="form-control" type="text" name="descricoes" id="descricao" placeholder="Ex: Ler livro">
                                             </div>
                                             <div class="col-10 offset-1 mt-2">
                                                 <label class="form-label" for="detalhamento">Detalhamento</label>
-                                                <input class="form-control" type="text" name="detalhamentos" id="detalhamento" placeholder="Título do livro">
+                                                <input class="form-control" type="text" name="detalhamentos" id="detalhamento" placeholder="Ex: Quebre a cabeça JavaScript">
                                               </div>
                                         </form>
                                     </div>
                                 </div>
                                 <div class="modal-footer mt-2">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                <button type="button" class="btn btn-primary">Savar</button>
+                                <button type="button" class="btn btn-primary" id="btn-salvar">Savar</button>
                                 </div>
                             </div>
                             </div>
